@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <div id="showdata"></div>
+    <button id="show">Show</button>
+    <script src="jQuery/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#show").click(function () {
+                $.ajax({
+                    url: "select.php",
+                    type: "POST",
+                    success: function (data) {
+                        $("#showdata").html(data)
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

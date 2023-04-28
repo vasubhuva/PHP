@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <div id="showdata"></div>
+    <script src="jQuery/jquery-3.6.4.min.js"></script>
+    <script>
+        function show() {
+            $.ajax({
+                url: "select.php",
+                type: "POST",
+                success: function (data) {
+                    $("#showdata").html(data)
+                }
+            })
+        }
+        show();
+
+        $(document).on("click", "button", function () {
+            var id1 = $(this).data("id");
+            // alert(id1)
+
+            $.ajax({
+
+                url: "delete.php",
+                type: "POST",
+                data: { id: id1 },
+                success: function (data) {
+                    if (data == 1) {
+                        show();
+                    } else {
+                        alert("Sorry")
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

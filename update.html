@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <table id="edit">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td>E-Mail</td>
+            <td><input type="text" id="mail"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button id="save">Save</button>
+            </td>
+        </tr>
+    </table>
+    <div id="showdata"></div>
+    <script src="jQuery/jquery-3.6.4.min.js"></script>
+    <script>
+        $("#edit").hide();
+        function show() {
+            $.ajax({
+                url: "select.php",
+                type: "POST",
+                success: function (data) {
+                    $("#showdata").html(data)
+                }
+            })
+        }
+        show();
+
+        var id1;
+        $(document).on("click", ".edit", function () {
+            $("#edit").show();
+            id1 = $(this).data("id");
+        })
+        $("#save").click(function () {
+                var name1 = $("#name").val();
+                var mail1 = $("#mail").val();
+                $.ajax({
+                    url: "update.php",
+                    type: "POST",
+                    data: { id: id1, name: name1, email: mail1 },
+                    success: function (data) {
+                        if (data == 1) {
+                            show();
+                            $("#name").val("");
+                            $("#mail").val("");
+                            $("#edit").hide();
+                        } else {
+                            alert("sorry")
+                            $("#edit").hide();
+                        }
+                    },
+                })
+            })
+    </script>
+</body>
+
+</html>
