@@ -10,7 +10,7 @@
     <script>
         function show() {
             $.ajax({
-                url: "select.php",
+                url: "selectd.php",
                 type: "POST",
                 success: function (data) {
                     $("#showdata").html(data)
@@ -25,9 +25,9 @@
 
             $.ajax({
 
-                url: "delete.php",
+                url: "crud.php",
                 type: "POST",
-                data: { id: id1 },
+                data: { flag:"delete",id: id1 },
                 success: function (data) {
                     if (data == 1) {
                         show();
