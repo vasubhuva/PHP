@@ -1,0 +1,29 @@
+#submit {
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: white;
+    border-color: #362417;
+}
+
+#submit:hover {
+    color: white;
+    background-color: #362417;
+    border-color: white;
+}
+
+.container {
+    margin-left: 300px;
+    margin-top: 150px;
+    background-color: #f1dabf;
+    max-width: 300px;
+    padding: 8px;
+}
+
+input[type=text] {
+    border:none;
+}
+
+ input[type=text]:focus {
+     outline: none;
+ }
+
