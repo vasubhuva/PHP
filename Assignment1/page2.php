@@ -6,14 +6,15 @@ echo "Phone No.:" . $_POST["pno"] . "</br>";
 echo "E-Mail:" . $_POST["mail"] . "</br>";
 echo "Gender:". $_POST["gender"] . "</br>";
 
+echo "<b>Cookie data</b></br>";
 if(isset($_COOKIE["firstname"])){
-    echo "yes</br>";
+    echo "Firstname:".$_COOKIE["firstname"]. "</br>";
 }else{
-    echo "no</br>";
+    echo "Sorry!!! First names is not available</br>";
 }
 
 if (isset($_COOKIE["email"])) {
-    echo "yes</br>";
+    echo "Email:".$_COOKIE["email"]."</br>";
 } else {
-    echo "no</br>";
+    echo "Sorry!!! Email is not available</br>";
 }
