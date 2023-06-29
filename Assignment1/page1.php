@@ -5,14 +5,14 @@
 </head>
 
 <body>
-    <form action="page2.php" method="post">
+    <form action="page2.php" method="post" onsubmit="return mcookie()">
         <table>
             <tr>
                 <td>
                     First name:
                 </td>
                 <td>
-                    <input type="text" name="fname" id="fname" oninput="cfname()">
+                    <input type="text" name="fname" id="fname">
                 </td>
             </tr>
             <tr>
@@ -36,8 +36,7 @@
                     E-mail:
                 </td>
                 <td>
-                    <input type="text" name="mail" id="mail" oninput="cmail()">
-                </td>
+                    <input type="text" name="mail" id="mail">
             </tr>
             <tr>
                 <td>
@@ -59,20 +58,18 @@
 </body>
 
 <script>
-    function cfname() {
-        <?php
+    function mcookie() {
+        var x = document.getElementById("fname").value;
+        var y = document.getElementById("mail").value;
 
-        $cookuie_value = $_POST["fname"];
-        setcookie("firstname", $cookuie_value, time() + (86400 * 30), "/");
-        ?>
-    }
-
-    function cmail() {
-        <?php
-
-        $cookuie_value = $_POST["mail"];
-        setcookie("email", $cookuie_value, time() + (86400 * 30), "/");
-        ?>
+        if (x != "" && y != "") {
+            document.cookie = "firstname=" + x
+            document.cookie = "email=" + y
+            return true
+        }else{
+            alert("Enter Firstname and/or email")
+            return false
+        }
     }
 </script>
 
